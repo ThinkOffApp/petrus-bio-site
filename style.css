@@ -2,13 +2,16 @@
     --bg-color: #0d0f12;
     --surface-color: rgba(25, 28, 33, 0.7);
     --surface-border: rgba(255, 255, 255, 0.08);
-    --text-primary: #f0f2f5;
-    --text-secondary: #a0aab5;
-    --accent-glow: rgba(56, 189, 248, 0.15);
-    --accent-color: #38bdf8;
-    --accent-hover: #0ea5e9;
+    --text-primary: #fdf4f9;
+    --text-secondary: #c1b5bd;
+    --accent-glow: rgba(217, 70, 239, 0.15);
+    /* Fuchsia 500 */
+    --accent-color: #d946ef;
+    /* Fuchsia 500 */
+    --accent-hover: #c026d3;
+    /* Fuchsia 600 */
     --font-sans: 'Inter', system-ui, -apple-system, sans-serif;
-    --border-radius: 16px;
+    --border-radius: 12px;
     --transition-speed: 0.3s;
 }
 
@@ -61,13 +64,14 @@ body {
     width: 60vw;
     height: 60vw;
     background: radial-gradient(circle, rgba(139, 92, 246, 0.1), transparent 70%);
+    /* Keep purple secondary glow */
 }
 
 /* Layout */
 .container {
-    max-width: 800px;
+    max-width: 720px;
     margin: 0 auto;
-    padding: 0 24px;
+    padding: 0 20px;
 }
 
 .mt-4 {
@@ -79,49 +83,52 @@ body {
 }
 
 /* Typography */
-h1, h2, h3 {
+h1,
+h2,
+h3 {
     font-weight: 600;
-    line-height: 1.2;
-    margin-bottom: 1rem;
+    line-height: 1.1;
+    margin-bottom: 0.75rem;
     letter-spacing: -0.02em;
 }
 
 h1.title {
-    font-size: clamp(3rem, 10vw, 4.5rem);
+    font-size: clamp(2.5rem, 8vw, 3.5rem);
     font-weight: 800;
-    background: linear-gradient(135deg, #fff 0%, #a0aab5 100%);
+    background: linear-gradient(135deg, #fff 0%, #d4d4d8 100%);
     -webkit-background-clip: text;
+    background-clip: text;
     -webkit-text-fill-color: transparent;
-    margin-bottom: 0.5rem;
+    margin-bottom: 0.25rem;
 }
 
 h2 {
-    font-size: 2rem;
+    font-size: 1.75rem;
     color: #fff;
     border-bottom: 1px solid var(--surface-border);
-    padding-bottom: 0.75rem;
-    margin-bottom: 1.5rem;
+    padding-bottom: 0.5rem;
+    margin-bottom: 1rem;
 }
 
 h3 {
-    font-size: 1.25rem;
+    font-size: 1.15rem;
     color: #e2e8f0;
 }
 
 p {
     color: var(--text-secondary);
-    margin-bottom: 1rem;
-    font-size: 1.05rem;
+    margin-bottom: 0.75rem;
+    font-size: 1rem;
 }
 
 /* Hero Section */
 .hero {
-    padding: 12vh 0 8vh;
+    padding: 8vh 0 6vh;
     text-align: center;
 }
 
 .hero .subtitle {
-    font-size: 1.25rem;
+    font-size: 1.1rem;
     color: var(--accent-color);
     letter-spacing: 0.05em;
     text-transform: uppercase;
@@ -133,8 +140,8 @@ p {
     background: var(--surface-color);
     border: 1px solid var(--surface-border);
     border-radius: var(--border-radius);
-    padding: 2.5rem;
-    margin-bottom: 3rem;
+    padding: 1.5rem 2rem;
+    margin-bottom: 2rem;
     backdrop-filter: blur(12px);
     -webkit-backdrop-filter: blur(12px);
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
@@ -163,10 +170,16 @@ p {
 
 .sub-card {
     background: rgba(0, 0, 0, 0.2);
-    padding: 1.5rem;
+    padding: 1rem;
     border-radius: 12px;
     border: 1px solid rgba(255, 255, 255, 0.05);
     transition: background var(--transition-speed);
+    display: flex;
+    flex-direction: column;
+}
+
+.sub-card p {
+    flex-grow: 1;
 }
 
 .sub-card:hover {
@@ -178,14 +191,15 @@ p {
     display: flex;
     gap: 1rem;
     flex-wrap: wrap;
-    margin-top: 2rem;
+    margin-top: 1rem;
 }
 
 .btn {
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    padding: 0.75rem 1.5rem;
+    padding: 0.4rem 1rem;
+    font-size: 0.95rem;
     background: var(--accent-color);
     color: #fff;
     text-decoration: none;
@@ -198,7 +212,7 @@ p {
 .btn:hover {
     background: var(--accent-hover);
     transform: translateY(-2px);
-    box-shadow: 0 4px 12px rgba(56, 189, 248, 0.3);
+    box-shadow: 0 4px 12px rgba(217, 70, 239, 0.3);
 }
 
 .btn-outline {
@@ -215,8 +229,8 @@ p {
 }
 
 .btn.small {
-    padding: 0.5rem 1rem;
-    font-size: 0.9rem;
+    padding: 0.35rem 0.8rem;
+    font-size: 0.85rem;
 }
 
 .text-link {
@@ -241,19 +255,51 @@ p {
     transform: translateX(4px);
 }
 
-/* Stats */
+/* Stats Layer */
+.physics-metrics {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+    align-items: center;
+    margin-top: 1rem;
+}
+
+@media (min-width: 600px) {
+    .physics-metrics {
+        grid-template-columns: auto 1fr;
+    }
+}
+
+.physics-metrics .stats-box {
+    margin: 0;
+}
+
+.physics-metrics .links {
+    margin-top: 0;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1rem;
+}
+
+@media (min-width: 600px) {
+    .physics-metrics .links {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
 .stats-box {
     display: inline-flex;
     flex-direction: column;
-    background: rgba(56, 189, 248, 0.1);
-    border: 1px solid rgba(56, 189, 248, 0.2);
-    padding: 1rem 1.5rem;
-    border-radius: 12px;
-    margin: 1.5rem 0;
+    background: rgba(217, 70, 239, 0.08);
+    /* Fuchsia subtle background */
+    border: 1px solid rgba(217, 70, 239, 0.2);
+    padding: 0.75rem 1.25rem;
+    border-radius: 8px;
+    margin: 1rem 0;
 }
 
 .stat-label {
-    font-size: 0.85rem;
+    font-size: 0.8rem;
     text-transform: uppercase;
     letter-spacing: 0.05em;
     color: var(--accent-color);
@@ -261,7 +307,7 @@ p {
 }
 
 .stat-value {
-    font-size: 2.5rem;
+    font-size: 2rem;
     font-weight: 800;
     color: #fff;
     line-height: 1.1;
@@ -273,11 +319,12 @@ p {
 }
 
 .initiative-list li {
-    padding: 1rem 0;
+    padding: 0.75rem 0;
     border-bottom: 1px solid var(--surface-border);
     color: var(--text-secondary);
     position: relative;
-    padding-left: 1.5rem;
+    padding-left: 1.25rem;
+    font-size: 0.95rem;
 }
 
 .initiative-list li::before {
@@ -285,8 +332,8 @@ p {
     color: var(--accent-color);
     position: absolute;
     left: 0;
-    font-size: 1.5rem;
-    top: 0.5rem;
+    font-size: 1.25rem;
+    top: 0.45rem;
 }
 
 .initiative-list li:last-child {
@@ -299,30 +346,30 @@ p {
 
 /* Footer */
 .footer {
-    padding: 4rem 0 2rem;
+    padding: 3rem 0 1.5rem;
     border-top: 1px solid var(--surface-border);
-    margin-top: 4rem;
+    margin-top: 3rem;
 }
 
 .social-links {
     display: flex;
     justify-content: center;
-    gap: 1.5rem;
-    margin-bottom: 1.5rem;
+    gap: 1.25rem;
+    margin-bottom: 1.25rem;
 }
 
 .social-icon {
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 44px;
-    height: 44px;
+    width: 38px;
+    height: 38px;
     border-radius: 50%;
     background: var(--surface-color);
     border: 1px solid var(--surface-border);
     color: var(--text-primary);
     text-decoration: none;
-    font-size: 1.25rem;
+    font-size: 1.15rem;
     font-weight: bold;
     transition: all var(--transition-speed);
 }
