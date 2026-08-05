@@ -601,3 +601,19 @@ p {
     opacity: 1;
     transform: translateY(0);
 }
+/* Portrait in the hero (petrus, Aug 5 2026: "add my pic"). Sized in CSS as
+   well as the img attributes so the layout does not jump while it loads. */
+.hero .portrait {
+    width: 180px;
+    height: 180px;
+    border-radius: 50%;
+    object-fit: cover;
+    display: block;
+    margin: 0 auto 1.25rem;
+    border: 3px solid rgba(255, 255, 255, 0.18);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.28);
+}
+
+@media (max-width: 560px) {
+    .hero .portrait { width: 132px; height: 132px; }
+}
